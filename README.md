@@ -7,7 +7,7 @@ Idea MyBatis Generator逆向工程生成代码示例
 
 ### 运行方式:
 
-![](https://github.com/674803226/mybatis-generator.git/raw/master/Screenshots/1.png)
-![](https://github.com/674803226/mybatis-generator.git/origin/master/Screenshots/2.png)
-![](https://github.com/674803226/mybatis-generator.git/origin/master/Screenshots/3.png)
-![](https://github.com/674803226/mybatis-generator.git/origin/master/Screenshots/4.png)
+![](https://github.com/674803226/mybatis-generator/blob/master/Screenshots/1.png)
+![](https://github.com/674803226/mybatis-generator/blob/master/Screenshots/2.png)
+![](https://github.com/674803226/mybatis-generator/blob/master/Screenshots/3.png)
+![](https://github.com/674803226/mybatis-generator/blob/master/Screenshots/4.png)
