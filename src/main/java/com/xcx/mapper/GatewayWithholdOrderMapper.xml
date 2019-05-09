@@ -1,0 +1,654 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xcx.dao.GatewayWithholdOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.xcx.model.GatewayWithholdOrder" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="merchant_no" property="merchantNo" jdbcType="VARCHAR" />
+    <result column="order_id" property="orderId" jdbcType="VARCHAR" />
+    <result column="business_order_id" property="businessOrderId" jdbcType="VARCHAR" />
+    <result column="reference" property="reference" jdbcType="VARCHAR" />
+    <result column="amount" property="amount" jdbcType="DECIMAL" />
+    <result column="poundage" property="poundage" jdbcType="DECIMAL" />
+    <result column="account_type" property="accountType" jdbcType="INTEGER" />
+    <result column="id_type" property="idType" jdbcType="VARCHAR" />
+    <result column="id_number" property="idNumber" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="account" property="account" jdbcType="VARCHAR" />
+    <result column="person_name" property="personName" jdbcType="VARCHAR" />
+    <result column="gateway_account" property="gatewayAccount" jdbcType="VARCHAR" />
+    <result column="bank" property="bank" jdbcType="VARCHAR" />
+    <result column="bank_name" property="bankName" jdbcType="VARCHAR" />
+    <result column="bank_code" property="bankCode" jdbcType="VARCHAR" />
+    <result column="branch_name" property="branchName" jdbcType="VARCHAR" />
+    <result column="prov" property="prov" jdbcType="INTEGER" />
+    <result column="prov_name" property="provName" jdbcType="VARCHAR" />
+    <result column="city" property="city" jdbcType="INTEGER" />
+    <result column="city_name" property="cityName" jdbcType="VARCHAR" />
+    <result column="trans_type" property="transType" jdbcType="VARCHAR" />
+    <result column="trans_code" property="transCode" jdbcType="VARCHAR" />
+    <result column="trans_message" property="transMessage" jdbcType="VARCHAR" />
+    <result column="ext" property="ext" jdbcType="VARCHAR" />
+    <result column="memo" property="memo" jdbcType="VARCHAR" />
+    <result column="pay_callback" property="payCallback" jdbcType="VARCHAR" />
+    <result column="label" property="label" jdbcType="VARCHAR" />
+    <result column="notify" property="notify" jdbcType="INTEGER" />
+    <result column="created_at" property="createdAt" jdbcType="TIMESTAMP" />
+    <result column="updated_at" property="updatedAt" jdbcType="TIMESTAMP" />
+    <result column="batch_no" property="batchNo" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, merchant_no, order_id, business_order_id, reference, amount, poundage, account_type, 
+    id_type, id_number, phone, account, person_name, gateway_account, bank, bank_name, 
+    bank_code, branch_name, prov, prov_name, city, city_name, trans_type, trans_code, 
+    trans_message, ext, memo, pay_callback, label, notify, created_at, updated_at, batch_no
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xcx.model.GatewayWithholdOrderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from gateway_withhold_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from gateway_withhold_order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from gateway_withhold_order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xcx.model.GatewayWithholdOrderExample" >
+    delete from gateway_withhold_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xcx.model.GatewayWithholdOrder" >
+    insert into gateway_withhold_order (id, merchant_no, order_id, 
+      business_order_id, reference, amount, 
+      poundage, account_type, id_type, 
+      id_number, phone, account, 
+      person_name, gateway_account, bank, 
+      bank_name, bank_code, branch_name, 
+      prov, prov_name, city, 
+      city_name, trans_type, trans_code, 
+      trans_message, ext, memo, 
+      pay_callback, label, notify, 
+      created_at, updated_at, batch_no
+      )
+    values (#{id,jdbcType=INTEGER}, #{merchantNo,jdbcType=VARCHAR}, #{orderId,jdbcType=VARCHAR}, 
+      #{businessOrderId,jdbcType=VARCHAR}, #{reference,jdbcType=VARCHAR}, #{amount,jdbcType=DECIMAL}, 
+      #{poundage,jdbcType=DECIMAL}, #{accountType,jdbcType=INTEGER}, #{idType,jdbcType=VARCHAR}, 
+      #{idNumber,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{account,jdbcType=VARCHAR}, 
+      #{personName,jdbcType=VARCHAR}, #{gatewayAccount,jdbcType=VARCHAR}, #{bank,jdbcType=VARCHAR}, 
+      #{bankName,jdbcType=VARCHAR}, #{bankCode,jdbcType=VARCHAR}, #{branchName,jdbcType=VARCHAR}, 
+      #{prov,jdbcType=INTEGER}, #{provName,jdbcType=VARCHAR}, #{city,jdbcType=INTEGER}, 
+      #{cityName,jdbcType=VARCHAR}, #{transType,jdbcType=VARCHAR}, #{transCode,jdbcType=VARCHAR}, 
+      #{transMessage,jdbcType=VARCHAR}, #{ext,jdbcType=VARCHAR}, #{memo,jdbcType=VARCHAR}, 
+      #{payCallback,jdbcType=VARCHAR}, #{label,jdbcType=VARCHAR}, #{notify,jdbcType=INTEGER}, 
+      #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}, #{batchNo,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xcx.model.GatewayWithholdOrder" >
+    insert into gateway_withhold_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="merchantNo != null" >
+        merchant_no,
+      </if>
+      <if test="orderId != null" >
+        order_id,
+      </if>
+      <if test="businessOrderId != null" >
+        business_order_id,
+      </if>
+      <if test="reference != null" >
+        reference,
+      </if>
+      <if test="amount != null" >
+        amount,
+      </if>
+      <if test="poundage != null" >
+        poundage,
+      </if>
+      <if test="accountType != null" >
+        account_type,
+      </if>
+      <if test="idType != null" >
+        id_type,
+      </if>
+      <if test="idNumber != null" >
+        id_number,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="account != null" >
+        account,
+      </if>
+      <if test="personName != null" >
+        person_name,
+      </if>
+      <if test="gatewayAccount != null" >
+        gateway_account,
+      </if>
+      <if test="bank != null" >
+        bank,
+      </if>
+      <if test="bankName != null" >
+        bank_name,
+      </if>
+      <if test="bankCode != null" >
+        bank_code,
+      </if>
+      <if test="branchName != null" >
+        branch_name,
+      </if>
+      <if test="prov != null" >
+        prov,
+      </if>
+      <if test="provName != null" >
+        prov_name,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="cityName != null" >
+        city_name,
+      </if>
+      <if test="transType != null" >
+        trans_type,
+      </if>
+      <if test="transCode != null" >
+        trans_code,
+      </if>
+      <if test="transMessage != null" >
+        trans_message,
+      </if>
+      <if test="ext != null" >
+        ext,
+      </if>
+      <if test="memo != null" >
+        memo,
+      </if>
+      <if test="payCallback != null" >
+        pay_callback,
+      </if>
+      <if test="label != null" >
+        label,
+      </if>
+      <if test="notify != null" >
+        notify,
+      </if>
+      <if test="createdAt != null" >
+        created_at,
+      </if>
+      <if test="updatedAt != null" >
+        updated_at,
+      </if>
+      <if test="batchNo != null" >
+        batch_no,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="merchantNo != null" >
+        #{merchantNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="businessOrderId != null" >
+        #{businessOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="reference != null" >
+        #{reference,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="poundage != null" >
+        #{poundage,jdbcType=DECIMAL},
+      </if>
+      <if test="accountType != null" >
+        #{accountType,jdbcType=INTEGER},
+      </if>
+      <if test="idType != null" >
+        #{idType,jdbcType=VARCHAR},
+      </if>
+      <if test="idNumber != null" >
+        #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="personName != null" >
+        #{personName,jdbcType=VARCHAR},
+      </if>
+      <if test="gatewayAccount != null" >
+        #{gatewayAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null" >
+        #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null" >
+        #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCode != null" >
+        #{bankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="branchName != null" >
+        #{branchName,jdbcType=VARCHAR},
+      </if>
+      <if test="prov != null" >
+        #{prov,jdbcType=INTEGER},
+      </if>
+      <if test="provName != null" >
+        #{provName,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=INTEGER},
+      </if>
+      <if test="cityName != null" >
+        #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="transType != null" >
+        #{transType,jdbcType=VARCHAR},
+      </if>
+      <if test="transCode != null" >
+        #{transCode,jdbcType=VARCHAR},
+      </if>
+      <if test="transMessage != null" >
+        #{transMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="ext != null" >
+        #{ext,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="payCallback != null" >
+        #{payCallback,jdbcType=VARCHAR},
+      </if>
+      <if test="label != null" >
+        #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="notify != null" >
+        #{notify,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null" >
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null" >
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="batchNo != null" >
+        #{batchNo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xcx.model.GatewayWithholdOrderExample" resultType="java.lang.Integer" >
+    select count(*) from gateway_withhold_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update gateway_withhold_order
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.merchantNo != null" >
+        merchant_no = #{record.merchantNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.orderId != null" >
+        order_id = #{record.orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.businessOrderId != null" >
+        business_order_id = #{record.businessOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.reference != null" >
+        reference = #{record.reference,jdbcType=VARCHAR},
+      </if>
+      <if test="record.amount != null" >
+        amount = #{record.amount,jdbcType=DECIMAL},
+      </if>
+      <if test="record.poundage != null" >
+        poundage = #{record.poundage,jdbcType=DECIMAL},
+      </if>
+      <if test="record.accountType != null" >
+        account_type = #{record.accountType,jdbcType=INTEGER},
+      </if>
+      <if test="record.idType != null" >
+        id_type = #{record.idType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idNumber != null" >
+        id_number = #{record.idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null" >
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.account != null" >
+        account = #{record.account,jdbcType=VARCHAR},
+      </if>
+      <if test="record.personName != null" >
+        person_name = #{record.personName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gatewayAccount != null" >
+        gateway_account = #{record.gatewayAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bank != null" >
+        bank = #{record.bank,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankName != null" >
+        bank_name = #{record.bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.bankCode != null" >
+        bank_code = #{record.bankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.branchName != null" >
+        branch_name = #{record.branchName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.prov != null" >
+        prov = #{record.prov,jdbcType=INTEGER},
+      </if>
+      <if test="record.provName != null" >
+        prov_name = #{record.provName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.city != null" >
+        city = #{record.city,jdbcType=INTEGER},
+      </if>
+      <if test="record.cityName != null" >
+        city_name = #{record.cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.transType != null" >
+        trans_type = #{record.transType,jdbcType=VARCHAR},
+      </if>
+      <if test="record.transCode != null" >
+        trans_code = #{record.transCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.transMessage != null" >
+        trans_message = #{record.transMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="record.ext != null" >
+        ext = #{record.ext,jdbcType=VARCHAR},
+      </if>
+      <if test="record.memo != null" >
+        memo = #{record.memo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.payCallback != null" >
+        pay_callback = #{record.payCallback,jdbcType=VARCHAR},
+      </if>
+      <if test="record.label != null" >
+        label = #{record.label,jdbcType=VARCHAR},
+      </if>
+      <if test="record.notify != null" >
+        notify = #{record.notify,jdbcType=INTEGER},
+      </if>
+      <if test="record.createdAt != null" >
+        created_at = #{record.createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedAt != null" >
+        updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.batchNo != null" >
+        batch_no = #{record.batchNo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update gateway_withhold_order
+    set id = #{record.id,jdbcType=INTEGER},
+      merchant_no = #{record.merchantNo,jdbcType=VARCHAR},
+      order_id = #{record.orderId,jdbcType=VARCHAR},
+      business_order_id = #{record.businessOrderId,jdbcType=VARCHAR},
+      reference = #{record.reference,jdbcType=VARCHAR},
+      amount = #{record.amount,jdbcType=DECIMAL},
+      poundage = #{record.poundage,jdbcType=DECIMAL},
+      account_type = #{record.accountType,jdbcType=INTEGER},
+      id_type = #{record.idType,jdbcType=VARCHAR},
+      id_number = #{record.idNumber,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      account = #{record.account,jdbcType=VARCHAR},
+      person_name = #{record.personName,jdbcType=VARCHAR},
+      gateway_account = #{record.gatewayAccount,jdbcType=VARCHAR},
+      bank = #{record.bank,jdbcType=VARCHAR},
+      bank_name = #{record.bankName,jdbcType=VARCHAR},
+      bank_code = #{record.bankCode,jdbcType=VARCHAR},
+      branch_name = #{record.branchName,jdbcType=VARCHAR},
+      prov = #{record.prov,jdbcType=INTEGER},
+      prov_name = #{record.provName,jdbcType=VARCHAR},
+      city = #{record.city,jdbcType=INTEGER},
+      city_name = #{record.cityName,jdbcType=VARCHAR},
+      trans_type = #{record.transType,jdbcType=VARCHAR},
+      trans_code = #{record.transCode,jdbcType=VARCHAR},
+      trans_message = #{record.transMessage,jdbcType=VARCHAR},
+      ext = #{record.ext,jdbcType=VARCHAR},
+      memo = #{record.memo,jdbcType=VARCHAR},
+      pay_callback = #{record.payCallback,jdbcType=VARCHAR},
+      label = #{record.label,jdbcType=VARCHAR},
+      notify = #{record.notify,jdbcType=INTEGER},
+      created_at = #{record.createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
+      batch_no = #{record.batchNo,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xcx.model.GatewayWithholdOrder" >
+    update gateway_withhold_order
+    <set >
+      <if test="merchantNo != null" >
+        merchant_no = #{merchantNo,jdbcType=VARCHAR},
+      </if>
+      <if test="orderId != null" >
+        order_id = #{orderId,jdbcType=VARCHAR},
+      </if>
+      <if test="businessOrderId != null" >
+        business_order_id = #{businessOrderId,jdbcType=VARCHAR},
+      </if>
+      <if test="reference != null" >
+        reference = #{reference,jdbcType=VARCHAR},
+      </if>
+      <if test="amount != null" >
+        amount = #{amount,jdbcType=DECIMAL},
+      </if>
+      <if test="poundage != null" >
+        poundage = #{poundage,jdbcType=DECIMAL},
+      </if>
+      <if test="accountType != null" >
+        account_type = #{accountType,jdbcType=INTEGER},
+      </if>
+      <if test="idType != null" >
+        id_type = #{idType,jdbcType=VARCHAR},
+      </if>
+      <if test="idNumber != null" >
+        id_number = #{idNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="personName != null" >
+        person_name = #{personName,jdbcType=VARCHAR},
+      </if>
+      <if test="gatewayAccount != null" >
+        gateway_account = #{gatewayAccount,jdbcType=VARCHAR},
+      </if>
+      <if test="bank != null" >
+        bank = #{bank,jdbcType=VARCHAR},
+      </if>
+      <if test="bankName != null" >
+        bank_name = #{bankName,jdbcType=VARCHAR},
+      </if>
+      <if test="bankCode != null" >
+        bank_code = #{bankCode,jdbcType=VARCHAR},
+      </if>
+      <if test="branchName != null" >
+        branch_name = #{branchName,jdbcType=VARCHAR},
+      </if>
+      <if test="prov != null" >
+        prov = #{prov,jdbcType=INTEGER},
+      </if>
+      <if test="provName != null" >
+        prov_name = #{provName,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=INTEGER},
+      </if>
+      <if test="cityName != null" >
+        city_name = #{cityName,jdbcType=VARCHAR},
+      </if>
+      <if test="transType != null" >
+        trans_type = #{transType,jdbcType=VARCHAR},
+      </if>
+      <if test="transCode != null" >
+        trans_code = #{transCode,jdbcType=VARCHAR},
+      </if>
+      <if test="transMessage != null" >
+        trans_message = #{transMessage,jdbcType=VARCHAR},
+      </if>
+      <if test="ext != null" >
+        ext = #{ext,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null" >
+        memo = #{memo,jdbcType=VARCHAR},
+      </if>
+      <if test="payCallback != null" >
+        pay_callback = #{payCallback,jdbcType=VARCHAR},
+      </if>
+      <if test="label != null" >
+        label = #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="notify != null" >
+        notify = #{notify,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null" >
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null" >
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="batchNo != null" >
+        batch_no = #{batchNo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xcx.model.GatewayWithholdOrder" >
+    update gateway_withhold_order
+    set merchant_no = #{merchantNo,jdbcType=VARCHAR},
+      order_id = #{orderId,jdbcType=VARCHAR},
+      business_order_id = #{businessOrderId,jdbcType=VARCHAR},
+      reference = #{reference,jdbcType=VARCHAR},
+      amount = #{amount,jdbcType=DECIMAL},
+      poundage = #{poundage,jdbcType=DECIMAL},
+      account_type = #{accountType,jdbcType=INTEGER},
+      id_type = #{idType,jdbcType=VARCHAR},
+      id_number = #{idNumber,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      account = #{account,jdbcType=VARCHAR},
+      person_name = #{personName,jdbcType=VARCHAR},
+      gateway_account = #{gatewayAccount,jdbcType=VARCHAR},
+      bank = #{bank,jdbcType=VARCHAR},
+      bank_name = #{bankName,jdbcType=VARCHAR},
+      bank_code = #{bankCode,jdbcType=VARCHAR},
+      branch_name = #{branchName,jdbcType=VARCHAR},
+      prov = #{prov,jdbcType=INTEGER},
+      prov_name = #{provName,jdbcType=VARCHAR},
+      city = #{city,jdbcType=INTEGER},
+      city_name = #{cityName,jdbcType=VARCHAR},
+      trans_type = #{transType,jdbcType=VARCHAR},
+      trans_code = #{transCode,jdbcType=VARCHAR},
+      trans_message = #{transMessage,jdbcType=VARCHAR},
+      ext = #{ext,jdbcType=VARCHAR},
+      memo = #{memo,jdbcType=VARCHAR},
+      pay_callback = #{payCallback,jdbcType=VARCHAR},
+      label = #{label,jdbcType=VARCHAR},
+      notify = #{notify,jdbcType=INTEGER},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      batch_no = #{batchNo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
